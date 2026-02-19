@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/png" href="/apple-touch-icon.png">
+
+  <!-- iOS standalone app mode -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Google">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <title>Google</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+      font-family: sans-serif;
+      color: white;
+    }
+
+    #google {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: none; /* HIDDEN until Start is pressed */
+    }
+  </style>
+</head>
+
+<body>
+  
+  <iframe
+    id="google"
+    src="https://www.google.com/webhp?igu=1"
+    allow="fullscreen"
+    sandbox="allow-scripts allow-same-origin allow-modals allow-popups"
+  ></iframe>
+
+  <script>
+    const frame = document.getElementById("google");
+
+    // Request fullscreen (iOS + desktop compatible)
+    if (frame.requestFullscreen) frame.requestFullscreen();
+    else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
+
+    // Focus the iframe so keyboard input works immediately
+    frame.focus();
+
+    // Hide the button once fullscreen is triggered
+    startBtn.style.display = "none";
+  </script>
+
+</body>
+</html>
